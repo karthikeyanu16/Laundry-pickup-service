@@ -1,0 +1,8 @@
+# FreshPress Production robots.txt
+User-agent: *
+Allow: /
+Disallow: /pages/dashboard-admin.html
+Disallow: /pages/dashboard-user.html
+
+# Sitemap location
+Sitemap: https://freshpress-cleaners.com/sitemap.xml
