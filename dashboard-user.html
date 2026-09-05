@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - FreshPress Doorstep Hub</title>
+  <meta name="description" content="Manage your laundry pickups, track live driver status, download invoices, and update delivery addresses.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧺</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body style="background-color: var(--surface-secondary);">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top App Bar / Header -->
+  <header class="site-header">
+    <div class="container-fluid flex-between">
+      
+      <div style="display: flex; align-items: center; gap: var(--space-6);">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+          Fresh<span>Press</span>
+        </a>
+        <span class="badge badge-primary" style="display: none; @media(min-width: 768px){display: inline-flex;}"><i class="fa-solid fa-user-check"></i> Customer Portal</span>
+      </div>
+
+      <!-- User Nav & Controls -->
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+
+        <!-- Quick Schedule Button -->
+        <button type="button" class="btn btn-primary btn-sm" data-modal-target="#modal-schedule-pickup">
+          <i class="fa-solid fa-calendar-plus"></i> Schedule Pickup
+        </button>
+
+        <!-- User Profile Dropdown / Avatar -->
+        <div style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--border); padding-left: var(--space-4);">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah Jenkins" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+          <div style="display: none; @media(min-width: 640px){display: block;}">
+            <strong style="font-size: 0.9rem; display: block; line-height: 1.2;">Sarah Jenkins</strong>
+            <span style="font-size: 0.775rem; color: var(--accent); font-weight: 600;">Wash Club Member</span>
+          </div>
+          <a href="login.html" class="btn-icon" title="Logout" style="width: 34px; height: 34px; min-height: 34px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Dashboard Main Layout -->
+  <main id="main-content" style="padding-block: var(--space-8);">
+    <div class="container">
+      
+      <!-- Welcome Banner -->
+      <div class="card" style="margin-bottom: var(--space-8); background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; padding: var(--space-6) var(--space-8);">
+        <div class="flex-between" style="flex-wrap: wrap; gap: var(--space-4);">
+          <div>
+            <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff; margin-bottom: var(--space-2);"><i class="fa-solid fa-sparkles"></i> Priority Care Active</span>
+            <h2 style="color: #ffffff; margin-bottom: 4px;">Welcome back, Sarah!</h2>
+            <p style="color: #e0f2fe; margin-bottom: 0; font-size: 0.95rem;">You have <strong>1 active pickup</strong> scheduled for today and <strong>45 lbs</strong> remaining in your monthly Wash Club allowance.</p>
+          </div>
+          <div style="display: flex; gap: var(--space-3);">
+            <button type="button" class="btn btn-outline-white" data-modal-target="#modal-schedule-pickup">
+              <i class="fa-solid fa-plus"></i> New Pickup Request
+            </button>
+            <button type="button" class="btn btn-accent" data-modal-target="#modal-add-address">
+              <i class="fa-solid fa-map-location-dot"></i> Add Delivery Address
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURE 1: Interactive Live Order Status Tracking Stepper -->
+      <section class="order-tracker-card" aria-labelledby="tracker-heading">
+        <div class="flex-between" style="flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-4);">
+          <div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Current Active Order</div>
+            <h3 id="tracker-heading" style="margin: 0; font-size: 1.35rem;">Order #FP-9402 <span style="font-weight: normal; font-size: 0.95rem; color: var(--text-muted);">(Wash & Fold + 2 Suits)</span></h3>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="badge badge-primary" id="current-order-status-badge">In Treatment</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Delivery: <strong>Tomorrow, 5:00 PM</strong></span>
+          </div>
+        </div>
+
+        <!-- 5-Step Stepper -->
+        <div class="stepper" id="user-order-stepper">
+          <div class="stepper-progress" id="stepper-progress-fill" style="width: 50%;"></div>
+          
+          <!-- Node 1 -->
+          <div class="step-node completed">
+            <div class="step-icon-bubble"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="step-title">1. Scheduled</div>
+            <div class="step-desc">Sep 03, 9:00 AM</div>
+          </div>
+
+          <!-- Node 2 -->
+          <div class="step-node completed">
+            <div class="step-icon-bubble"><i class="fa-solid fa-van-shuttle"></i></div>
+            <div class="step-title">2. Picked Up</div>
+            <div class="step-desc">Driver Alex (Van #04)</div>
+          </div>
+
+          <!-- Node 3 -->
+          <div class="step-node active">
+            <div class="step-icon-bubble"><i class="fa-solid fa-jug-detergent"></i></div>
+            <div class="step-title">3. Cleaning Lab</div>
+            <div class="step-desc">Eco Wet Treatment</div>
+          </div>
+
+          <!-- Node 4 -->
+          <div class="step-node">
+            <div class="step-icon-bubble"><i class="fa-solid fa-shirt"></i></div>
+            <div class="step-title">4. Ironing & QC</div>
+            <div class="step-desc">Hand Pressing</div>
+          </div>
+
+          <!-- Node 5 -->
+          <div class="step-node">
+            <div class="step-icon-bubble"><i class="fa-solid fa-house-chimney-crack"></i></div>
+            <div class="step-title">5. Delivered</div>
+            <div class="step-desc">Doorstep Drop</div>
+          </div>
+        </div>
+
+        <!-- Stepper Detail Note & Demo Simulation Buttons -->
+        <div class="flex-between" style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;">
+          <div style="font-size: 0.9rem;">
+            <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i>
+            <span id="current-order-status-note">Items sorted into organic wet-cleaning & steam pressing cycles.</span>
+          </div>
+          
+          <!-- Simulation triggers to demonstrate dynamic stepper -->
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Interactive Demo Controls:</span>
+            <button type="button" class="btn btn-outline btn-sm" id="btn-sim-prev-step"><i class="fa-solid fa-backward-step"></i> Prev Stage</button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-sim-next-step">Next Stage <i class="fa-solid fa-forward-step"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURE 2 & 3: Browse Services & Clothing Item Categories -->
+      <section style="margin-bottom: var(--space-10);">
+        <div class="flex-between" style="margin-bottom: var(--space-4);">
+          <div>
+            <h3>Book & Select Clothing Items</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Add your garments to request quick doorstep washing, dry cleaning, or pressing.</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" data-modal-target="#modal-schedule-pickup">
+            <i class="fa-solid fa-calendar-day"></i> Choose Pickup Slot
+          </button>
+        </div>
+
+        <div class="grid grid-4">
+          <!-- Category 1 -->
+          <div class="card" style="text-align: center; cursor: pointer;" onclick="document.getElementById('modal-schedule-pickup').classList.add('active')">
+            <div class="step-icon-wrapper" style="width: 54px; height: 54px; font-size: 1.3rem; margin-bottom: var(--space-2); background: var(--primary-light); color: var(--primary);"><i class="fa-solid fa-jug-detergent"></i></div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 2px;">Wash & Fold</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">$2.25 / lb</span>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="card" style="text-align: center; cursor: pointer;" onclick="document.getElementById('modal-schedule-pickup').classList.add('active')">
+            <div class="step-icon-wrapper" style="width: 54px; height: 54px; font-size: 1.3rem; margin-bottom: var(--space-2); background: var(--accent-light); color: var(--accent);"><i class="fa-solid fa-vest"></i></div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 2px;">Dry Cleaning</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">From $6.50 / item</span>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="card" style="text-align: center; cursor: pointer;" onclick="document.getElementById('modal-schedule-pickup').classList.add('active')">
+            <div class="step-icon-wrapper" style="width: 54px; height: 54px; font-size: 1.3rem; margin-bottom: var(--space-2); background: var(--warning-light); color: var(--warning);"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 2px;">Ironing & Press</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">$3.50 / shirt</span>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="card" style="text-align: center; cursor: pointer;" onclick="document.getElementById('modal-schedule-pickup').classList.add('active')">
+            <div class="step-icon-wrapper" style="width: 54px; height: 54px; font-size: 1.3rem; margin-bottom: var(--space-2); background: #fee2e2; color: #ef4444;"><i class="fa-solid fa-bed"></i></div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 2px;">Bedding & Duvets</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">From $18.00 / item</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURE 4 & 5: Previous Orders & Invoices List -->
+      <section style="margin-bottom: var(--space-10);">
+        <div class="flex-between" style="margin-bottom: var(--space-4); flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3>Order History & Invoices</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Review past orders, check itemized laundry receipts, and download PDF invoices.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-outline btn-sm active">All Orders</button>
+            <button type="button" class="btn btn-outline btn-sm">Completed</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Service & Garments</th>
+                <th>Pickup Date</th>
+                <th>Delivered On</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#FP-9402</strong></td>
+                <td>Wash & Fold (12 lbs) + 2x Two-Piece Suits</td>
+                <td>Sep 03, 2026</td>
+                <td><em>In Treatment (Tomorrow)</em></td>
+                <td><strong>$59.00</strong></td>
+                <td><span class="badge badge-primary">In Treatment</span></td>
+                <td style="text-align: right;">
+                  <button type="button" class="btn btn-outline btn-sm" data-view-invoice="#FP-9402" data-order-date="Sep 03, 2026" data-order-amount="$59.00" data-order-items="12 lbs Wash & Fold, 2x Two-Piece Business Suits">
+                    <i class="fa-solid fa-file-invoice"></i> View Invoice
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#FP-8921</strong></td>
+                <td>5x Business Shirts Press, 1x Silk Blouse</td>
+                <td>Aug 27, 2026</td>
+                <td>Aug 28, 2026</td>
+                <td><strong>$32.50</strong></td>
+                <td><span class="badge badge-success">Delivered</span></td>
+                <td style="text-align: right;">
+                  <button type="button" class="btn btn-outline btn-sm" data-view-invoice="#FP-8921" data-order-date="Aug 27, 2026" data-order-amount="$32.50" data-order-items="5x Business Shirts (Press), 1x Silk Blouse (Delicate Wet Clean)">
+                    <i class="fa-solid fa-file-invoice"></i> View Invoice
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#FP-8410</strong></td>
+                <td>King Goose Down Duvet Sanitization</td>
+                <td>Aug 14, 2026</td>
+                <td>Aug 16, 2026</td>
+                <td><strong>$28.00</strong></td>
+                <td><span class="badge badge-success">Delivered</span></td>
+                <td style="text-align: right;">
+                  <button type="button" class="btn btn-outline btn-sm" data-view-invoice="#FP-8410" data-order-date="Aug 14, 2026" data-order-amount="$28.00" data-order-items="1x King Goose Down Duvet, 2x Feather Pillows">
+                    <i class="fa-solid fa-file-invoice"></i> View Invoice
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FEATURE 6: Saved Delivery Addresses Manager -->
+      <section style="margin-bottom: var(--space-10);">
+        <div class="flex-between" style="margin-bottom: var(--space-4);">
+          <div>
+            <h3>Saved Delivery Addresses</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Specify where couriers collect hampers and drop off clean clothes.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" data-modal-target="#modal-add-address">
+            <i class="fa-solid fa-plus"></i> Add New Address
+          </button>
+        </div>
+
+        <div class="grid grid-3" id="saved-addresses-grid">
+          
+          <!-- Address 1 (Default) -->
+          <div class="card address-card">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-house-chimney" style="color: var(--primary); font-size: 1.2rem;"></i>
+                <h4 style="margin: 0; font-size: 1.05rem;">Home Apartment</h4>
+              </div>
+              <span class="badge badge-success">Default</span>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 16px;">
+              742 Evergreen Terrace, Apt 4B<br>
+              Midtown West, New York, NY 10001
+            </p>
+            <div style="display: flex; gap: 10px; margin-top: auto;">
+              <button type="button" class="btn btn-outline btn-sm" style="flex: 1;" onclick="alert('Editing Home address...')">Edit</button>
+              <button type="button" class="btn btn-outline btn-sm btn-delete-address" style="color: var(--danger);"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+
+          <!-- Address 2 -->
+          <div class="card address-card">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-briefcase" style="color: var(--accent); font-size: 1.2rem;"></i>
+                <h4 style="margin: 0; font-size: 1.05rem;">Office (Reception Drop)</h4>
+              </div>
+              <span class="badge badge-secondary">Work</span>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 16px;">
+              450 Lexington Ave, 12th Floor<br>
+              Grand Central, New York, NY 10017
+            </p>
+            <div style="display: flex; gap: 10px; margin-top: auto;">
+              <button type="button" class="btn btn-outline btn-sm" style="flex: 1;" onclick="alert('Editing Office address...')">Edit</button>
+              <button type="button" class="btn btn-outline btn-sm btn-delete-address" style="color: var(--danger);"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       MODAL 1: Schedule Pickup & Preferred Time Slot
+       ========================================================================= -->
+  <div class="modal-overlay" id="modal-schedule-pickup" role="dialog" aria-modal="true" aria-labelledby="modal-sched-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-sched-title" style="margin: 0; font-size: 1.25rem;"><i class="fa-solid fa-calendar-plus" style="color: var(--primary);"></i> Schedule Laundry Pickup</h3>
+        <button type="button" class="btn-icon" data-modal-close aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="schedule-pickup-modal-form" class="needs-validation" novalidate>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <label class="form-label" for="book-service-type">Service Category</label>
+            <select id="book-service-type" class="form-control form-select" required>
+              <option value="Wash & Fold">Wash & Fold ($2.25/lb)</option>
+              <option value="Eco Dry Cleaning" selected>Eco Dry Cleaning (Suits & Dresses)</option>
+              <option value="Steam Pressing">Hospitality Steam Pressing</option>
+              <option value="Bedding Care">Bedding, Comforters & Blankets</option>
+            </select>
+          </div>
+
+          <div class="grid grid-2" style="gap: var(--space-3); margin-bottom: var(--space-4);">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="book-pickup-date">Pickup Date</label>
+              <input type="date" id="book-pickup-date" class="form-control" required value="2026-09-04">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="book-time-slot">Preferred Slot</label>
+              <select id="book-time-slot" class="form-control form-select" required>
+                <option value="Morning (8:00 AM - 11:00 AM)">Morning (8:00 AM - 11:00 AM)</option>
+                <option value="Afternoon (1:00 PM - 4:00 PM)" selected>Afternoon (1:00 PM - 4:00 PM)</option>
+                <option value="Evening (6:00 PM - 9:00 PM)">Evening (6:00 PM - 9:00 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="book-address-select">Pickup Address</label>
+            <select id="book-address-select" class="form-control form-select">
+              <option value="742 Evergreen Terrace, Apt 4B">Home: 742 Evergreen Terrace, Apt 4B (Default)</option>
+              <option value="450 Lexington Ave, 12th Floor">Office: 450 Lexington Ave, 12th Floor</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="book-instructions">Driver Pickup Instructions (Optional)</label>
+            <input type="text" id="book-instructions" class="form-control" placeholder="e.g. Leave with doorman, or ring buzzer 4B">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-calendar-check"></i> Confirm Pickup</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: View / Download Invoice & Receipt
+       ========================================================================= -->
+  <div class="modal-overlay" id="modal-invoice-viewer" role="dialog" aria-modal="true" aria-labelledby="modal-inv-title">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 id="modal-inv-title" style="margin: 0; font-size: 1.25rem;"><i class="fa-solid fa-receipt" style="color: var(--primary);"></i> Laundry Invoice & Receipt</h3>
+        <button type="button" class="btn-icon" data-modal-close aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="invoice-printable-area">
+        
+        <!-- Invoice Header -->
+        <div class="flex-between" style="border-bottom: 2px solid var(--border); padding-bottom: var(--space-4); margin-bottom: var(--space-4);">
+          <div>
+            <div class="brand-logo" style="font-size: 1.3rem;">
+              <div class="logo-icon" style="width: 32px; height: 32px; font-size: 1rem;"><i class="fa-solid fa-shirt"></i></div>
+              Fresh<span>Press</span>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              FreshPress Cleaners LLC<br>
+              742 Evergreen Terrace, NY 10001
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <h4 style="margin: 0; color: var(--primary);" id="inv-modal-order-id">#FP-9402</h4>
+            <div style="font-size: 0.85rem; color: var(--text-muted);" id="inv-modal-date">Sep 03, 2026</div>
+            <span class="badge badge-success" style="margin-top: 4px;">Paid in Full</span>
+          </div>
+        </div>
+
+        <!-- Billed To -->
+        <div style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <strong style="display: block;">Billed To:</strong>
+          Sarah Jenkins (sarah.jenkins@example.com)<br>
+          742 Evergreen Terrace, Apt 4B, New York, NY 10001
+        </div>
+
+        <!-- Itemized Summary Table -->
+        <div style="border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: var(--space-4); overflow: hidden;">
+          <table class="table" style="margin-bottom: 0;">
+            <thead>
+              <tr>
+                <th>Itemized Services</th>
+                <th style="text-align: right;">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span id="inv-modal-items">12 lbs Wash & Fold, 2x Two-Piece Business Suits</span></td>
+                <td style="text-align: right;" id="inv-modal-amount"><strong>$59.00</strong></td>
+              </tr>
+              <tr>
+                <td>Eco Solvent Certification Fee</td>
+                <td style="text-align: right; color: var(--accent);"><strong>FREE</strong></td>
+              </tr>
+              <tr>
+                <td>Doorstep Pickup & Delivery</td>
+                <td style="text-align: right; color: var(--accent);"><strong>FREE ($0.00)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: right; font-size: 1.15rem; margin-top: var(--space-3);">
+          Total Paid: <strong style="color: var(--primary);" id="inv-modal-total-display">$59.00</strong>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-print-invoice"><i class="fa-solid fa-download"></i> Print / Save PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: Add Delivery Address
+       ========================================================================= -->
+  <div class="modal-overlay" id="modal-add-address" role="dialog" aria-modal="true" aria-labelledby="modal-addr-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-addr-title" style="margin: 0; font-size: 1.25rem;"><i class="fa-solid fa-map-pin" style="color: var(--accent);"></i> Add Delivery Address</h3>
+        <button type="button" class="btn-icon" data-modal-close aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-address-form" class="needs-validation" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="new-address-label">Address Label (e.g. Home, Office, Vacation Home)</label>
+            <input type="text" id="new-address-label" class="form-control" placeholder="Summer Loft" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="new-address-street">Street Address</label>
+            <input type="text" id="new-address-street" class="form-control" placeholder="88 Pine Street" required>
+          </div>
+          <div class="grid grid-2" style="gap: var(--space-3); margin-bottom: var(--space-4);">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="new-address-apt">Apt / Suite / Unit</label>
+              <input type="text" id="new-address-apt" class="form-control" placeholder="Unit 14C">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="new-address-cityzip">City, State, Zip Code</label>
+              <input type="text" id="new-address-cityzip" class="form-control" placeholder="New York, NY 10005" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+              <input type="checkbox" id="new-address-default">
+              <span>Set as my primary default delivery address</span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-accent btn-sm"><i class="fa-solid fa-check"></i> Save Address</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

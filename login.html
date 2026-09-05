@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - FreshPress Customer & Staff Portal</title>
+  <meta name="description" content="Sign in to your FreshPress customer dashboard to track live laundry orders, schedule pickups, or access the admin operations portal.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at top right, rgba(2, 132, 199, 0.1) 0%, transparent 60%);">
+  
+  <!-- Minimal Header -->
+  <header style="padding: var(--space-4) 0;">
+    <div class="container flex-between">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+        Fresh<span>Press</span>
+      </a>
+      <div style="display: flex; gap: var(--space-3); align-items: center;">
+        <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Card Container -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4);">
+    <div class="card" style="max-width: 480px; width: 100%; padding: var(--space-8); box-shadow: var(--shadow-xl);">
+      
+      <!-- Logo & Header -->
+      <div style="text-align: center; margin-bottom: var(--space-6);">
+        <h2 style="font-size: 1.6rem; margin-bottom: var(--space-2);">Welcome Back</h2>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Access your active laundry orders, history, and scheduled pickups.</p>
+      </div>
+
+      <!-- Customer vs Staff Tabs -->
+      <div class="item-category-pills" style="margin-bottom: var(--space-6); background: var(--surface-secondary); padding: 4px; border-radius: var(--radius-full);">
+        <button type="button" class="category-pill active" id="tab-cust" style="flex: 1; text-align: center;" onclick="switchLoginRole('customer')">Customer Portal</button>
+        <button type="button" class="category-pill" id="tab-admin" style="flex: 1; text-align: center;" onclick="switchLoginRole('admin')">Admin & Staff</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="needs-validation" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-control" placeholder="name@example.com" value="customer@freshpress.com" required>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+          <div class="flex-between" style="margin-bottom: var(--space-2);">
+            <label class="form-label" for="login-password" style="margin-bottom: 0;">Password</label>
+            <a href="#" style="font-size: 0.8rem;" onclick="alert('Password reset instructions sent to your email.')">Forgot password?</a>
+          </div>
+          <div style="position: relative;">
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" value="demo1234" required style="padding-right: 44px;">
+            <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility" style="position: absolute; right: 12px; top: 12px; background: none; border: none; color: var(--text-light); cursor: pointer;">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <div class="invalid-feedback">Password is required.</div>
+        </div>
+
+        <div class="flex-between" style="margin-bottom: var(--space-5);">
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer;">
+            <input type="checkbox" checked>
+            <span>Remember this browser</span>
+          </label>
+        </div>
+
+        <button type="submit" id="btn-login-submit" class="btn btn-primary btn-lg" style="width: 100%;">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In to Customer Dashboard
+        </button>
+      </form>
+
+      <!-- Social Logins -->
+      <div style="margin-block: var(--space-6); position: relative; text-align: center;">
+        <div style="border-top: 1px solid var(--border);"></div>
+        <span style="position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--surface); padding-inline: 12px; font-size: 0.8rem; color: var(--text-light);">or continue with</span>
+      </div>
+
+      <div class="grid grid-2" style="gap: var(--space-3); margin-bottom: var(--space-6);">
+        <button type="button" class="btn btn-outline" style="font-size: 0.875rem;" onclick="alert('Google authentication simulation: redirecting...')">
+          <i class="fa-brands fa-google" style="color: #ea4335;"></i> Google
+        </button>
+        <button type="button" class="btn btn-outline" style="font-size: 0.875rem;" onclick="alert('Apple ID simulation: redirecting...')">
+          <i class="fa-brands fa-apple"></i> Apple
+        </button>
+      </div>
+
+      <!-- Switch to Register -->
+      <div style="text-align: center; font-size: 0.9rem; color: var(--text-muted);">
+        Don't have an account yet? <a href="register.html" style="font-weight: 600;">Create Account</a>
+      </div>
+
+      <!-- Demo Shortcut Credentials Box -->
+      <div style="margin-top: var(--space-6); padding: var(--space-3); background: var(--surface-secondary); border-radius: var(--radius-sm); font-size: 0.775rem; color: var(--text-muted);">
+        <strong>Demo Quick Links:</strong><br>
+        • Customer Demo: Click Sign In to enter <a href="dashboard-user.html">dashboard-user.html</a><br>
+        • Operations Demo: Click Staff Tab to enter <a href="dashboard-admin.html">dashboard-admin.html</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    let currentRole = 'customer';
+
+    function switchLoginRole(role) {
+      currentRole = role;
+      const tabCust = document.getElementById('tab-cust');
+      const tabAdmin = document.getElementById('tab-admin');
+      const emailInput = document.getElementById('login-email');
+      const submitBtn = document.getElementById('btn-login-submit');
+
+      if (role === 'admin') {
+        tabAdmin.classList.add('active');
+        tabCust.classList.remove('active');
+        emailInput.value = 'admin@freshpress.com';
+        submitBtn.innerHTML = '<i class="fa-solid fa-gauge-high"></i> Sign In to Admin Ops';
+        submitBtn.className = 'btn btn-secondary btn-lg';
+      } else {
+        tabCust.classList.add('active');
+        tabAdmin.classList.remove('active');
+        emailInput.value = 'customer@freshpress.com';
+        submitBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Customer Dashboard';
+        submitBtn.className = 'btn btn-primary btn-lg';
+      }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('btn-login-submit');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
+
+      setTimeout(() => {
+        if (currentRole === 'admin') {
+          window.location.href = 'dashboard-admin.html';
+        } else {
+          window.location.href = 'dashboard-user.html';
+        }
+      }, 700);
+    });
+  </script>
+</body>
+</html>

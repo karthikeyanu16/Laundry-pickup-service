@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - FreshPress Expanding to New Zones</title>
+  <meta name="description" content="FreshPress is expanding to your neighborhood soon. Sign up for early VIP access and get 30% off your first pickup.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at center, rgba(2, 132, 199, 0.12) 0%, transparent 70%);">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header style="padding: var(--space-4) 0;">
+    <div class="container flex-between">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+        Fresh<span>Press</span>
+      </a>
+      <div style="display: flex; gap: var(--space-3); align-items: center;">
+        <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-house"></i> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Coming Soon Main Body -->
+  <main id="main-content" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4);">
+    <div class="container text-center" style="max-width: 680px;">
+      
+      <span class="section-tag accent" style="margin-bottom: var(--space-3);"><i class="fa-solid fa-rocket"></i> Expansion in Progress</span>
+      <h1 style="font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: var(--space-3);">Something Fresh is Brewing!</h1>
+      <p class="lead" style="margin-bottom: var(--space-8);">
+        We are putting the final touches on our new regional eco-plant and electric van fleet. Prepare to say goodbye to laundry day forever.
+      </p>
+
+      <!-- Live Animated Countdown Timer -->
+      <div id="countdown-timer" class="grid grid-4" style="gap: var(--space-4); max-width: 520px; margin: 0 auto var(--space-8) auto;">
+        
+        <div class="card" style="padding: var(--space-4);">
+          <div id="timer-days" style="font-size: 2.5rem; font-weight: 800; color: var(--primary); line-height: 1;">30</div>
+          <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Days</span>
+        </div>
+
+        <div class="card" style="padding: var(--space-4);">
+          <div id="timer-hours" style="font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1;">14</div>
+          <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Hours</span>
+        </div>
+
+        <div class="card" style="padding: var(--space-4);">
+          <div id="timer-minutes" style="font-size: 2.5rem; font-weight: 800; color: var(--warning); line-height: 1;">42</div>
+          <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Mins</span>
+        </div>
+
+        <div class="card" style="padding: var(--space-4);">
+          <div id="timer-seconds" style="font-size: 2.5rem; font-weight: 800; color: var(--primary); line-height: 1;">18</div>
+          <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Secs</span>
+        </div>
+
+      </div>
+
+      <!-- VIP Early Access Notification Form -->
+      <div class="card" style="padding: var(--space-6); box-shadow: var(--shadow-xl); max-width: 540px; margin-inline: auto;">
+        <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Get VIP Launch Notification</h3>
+        <p style="font-size: 0.875rem; margin-bottom: var(--space-4);">Be the first to know when pickups start in your neighborhood and get <strong>30% OFF</strong> your first order.</p>
+
+        <form class="needs-validation" data-demo-submit="true" style="display: flex; gap: var(--space-2); flex-wrap: wrap;" novalidate>
+          <input type="email" class="form-control" placeholder="Enter your email address" required style="flex: 1; min-width: 200px;">
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-bell"></i> Notify Me</button>
+        </form>
+      </div>
+
+      <!-- Social Channels -->
+      <div style="margin-top: var(--space-8); display: flex; justify-content: center; gap: var(--space-3);">
+        <a href="#" class="social-btn" style="background: var(--surface); color: var(--text-main); border: 1px solid var(--border);"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" style="background: var(--surface); color: var(--text-main); border: 1px solid var(--border);"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn" style="background: var(--surface); color: var(--text-main); border: 1px solid var(--border);"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding-top: var(--space-6);">
+    <div class="container text-center" style="padding-bottom: var(--space-4); font-size: 0.85rem; color: #94a3b8;">
+      &copy; 2026 FreshPress Laundry Technologies Inc.
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

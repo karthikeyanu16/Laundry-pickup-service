@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Lost in the Wash - FreshPress</title>
+  <meta name="description" content="Oops! The page you are looking for has vanished into the laundry cycle. Head back to FreshPress home.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧦</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container flex-between">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+        Fresh<span>Press</span>
+      </a>
+      <div style="display: flex; gap: var(--space-3); align-items: center;">
+        <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="index.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-house"></i> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 404 Main Body -->
+  <main id="main-content" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--space-12) var(--space-4);">
+    <div class="container text-center" style="max-width: 620px;">
+      
+      <!-- Icon Graphic -->
+      <div style="font-size: 5rem; color: var(--primary); margin-bottom: var(--space-4); animation: float 3s ease-in-out infinite;">
+        <i class="fa-solid fa-socks"></i>
+      </div>
+
+      <div class="section-tag" style="background: #fee2e2; color: #ef4444; font-size: 1rem; padding: 6px 18px;">
+        Error 404: Garment Not Found
+      </div>
+
+      <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-block: var(--space-4);">Lost in the Wash?</h1>
+      
+      <p class="lead" style="margin-bottom: var(--space-6);">
+        It seems the page you are looking for has vanished like a missing sock in the dryer spin cycle. The link may be broken, or the page was moved to a fresh rack.
+      </p>
+
+      <!-- Quick Search Bar -->
+      <div style="max-width: 420px; margin: 0 auto var(--space-8) auto;">
+        <form action="services.html" method="GET" style="display: flex; gap: 8px;">
+          <input type="text" class="form-control" placeholder="Search services, pricing..." required>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Back to Homepage</a>
+        <a href="services.html" class="btn btn-outline"><i class="fa-solid fa-list-check"></i> Browse Services</a>
+        <a href="contact.html" class="btn btn-outline"><i class="fa-solid fa-headset"></i> Contact Support</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding-top: var(--space-8);">
+    <div class="container text-center" style="padding-bottom: var(--space-6);">
+      <div style="font-size: 0.85rem; color: #94a3b8;">
+        &copy; 2026 FreshPress Laundry Technologies Inc. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(4deg); }
+    }
+  </style>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

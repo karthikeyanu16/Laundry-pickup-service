@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Operations Dashboard - FreshPress Fleet & Plant Management</title>
+  <meta name="description" content="Operations panel for managing laundry pickup dispatch, live order queues, dryer capacity, and revenue analytics.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN for revenue and volume trends -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body style="background-color: var(--surface-secondary);">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top App Header -->
+  <header class="site-header">
+    <div class="container-fluid flex-between">
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon" style="background: linear-gradient(135deg, var(--secondary), #334155);"><i class="fa-solid fa-gauge-high"></i></div>
+          Fresh<span>Press</span> <small style="font-size: 0.8rem; background: var(--secondary); color: #fff; padding: 2px 8px; border-radius: var(--radius-sm); margin-left: 6px;">ADMIN</small>
+        </a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: var(--space-3);">
+        <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Public Site</a>
+        <a href="dashboard-user.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-user"></i> Customer View</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main Content -->
+  <main id="main-content" style="padding-block: var(--space-8);">
+    <div class="container">
+      
+      <!-- Top Metrics Row -->
+      <div class="grid grid-4" style="margin-bottom: var(--space-8);">
+        <!-- Metric 1 -->
+        <div class="card">
+          <div class="flex-between" style="margin-bottom: var(--space-2);">
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">TODAY'S PICKUPS</span>
+            <div class="step-icon-wrapper" style="width: 36px; height: 36px; font-size: 1rem; margin: 0; background: var(--primary-light); color: var(--primary);"><i class="fa-solid fa-van-shuttle"></i></div>
+          </div>
+          <div style="font-size: 2rem; font-weight: 800;">48 Orders</div>
+          <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;"><i class="fa-solid fa-arrow-trend-up"></i> +14% vs last Thursday</span>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="card">
+          <div class="flex-between" style="margin-bottom: var(--space-2);">
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">ACTIVE IN CLEANING</span>
+            <div class="step-icon-wrapper" style="width: 36px; height: 36px; font-size: 1rem; margin: 0; background: var(--warning-light); color: var(--warning);"><i class="fa-solid fa-soap"></i></div>
+          </div>
+          <div style="font-size: 2rem; font-weight: 800;">342 Items</div>
+          <span style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">18 Express Rush Orders</span>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="card">
+          <div class="flex-between" style="margin-bottom: var(--space-2);">
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">OUT FOR DELIVERY</span>
+            <div class="step-icon-wrapper" style="width: 36px; height: 36px; font-size: 1rem; margin: 0; background: var(--accent-light); color: var(--accent);"><i class="fa-solid fa-box-open"></i></div>
+          </div>
+          <div style="font-size: 2rem; font-weight: 800;">26 Drops</div>
+          <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">Avg ETA: 28 mins</span>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="card">
+          <div class="flex-between" style="margin-bottom: var(--space-2);">
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">WEEKLY REVENUE</span>
+            <div class="step-icon-wrapper" style="width: 36px; height: 36px; font-size: 1rem; margin: 0; background: #dbeafe; color: #2563eb;"><i class="fa-solid fa-dollar-sign"></i></div>
+          </div>
+          <div style="font-size: 2rem; font-weight: 800;">$14,850</div>
+          <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;"><i class="fa-solid fa-arrow-trend-up"></i> +8.2% month-over-month</span>
+        </div>
+      </div>
+
+      <!-- Chart.js Revenue & Order Trends -->
+      <section class="card" style="margin-bottom: var(--space-8); padding: var(--space-6);">
+        <div class="flex-between" style="margin-bottom: var(--space-4); flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.25rem;">Weekly Processing & Revenue Trend</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Correlation between total laundry orders collected and gross revenue.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-outline btn-sm active">7 Days</button>
+            <button type="button" class="btn btn-outline btn-sm">30 Days</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="alert('Exporting CSV report...')"><i class="fa-solid fa-file-arrow-down"></i> Export Report</button>
+          </div>
+        </div>
+
+        <div style="height: 320px; width: 100%;">
+          <canvas id="admin-revenue-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Live Dispatch & Orders Queue Table -->
+      <section class="card" style="padding: var(--space-6);">
+        <div class="flex-between" style="margin-bottom: var(--space-4); flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.25rem;">Live Orders Queue & Driver Assignment</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Change statuses in real-time to notify drivers and customers.</p>
+          </div>
+          <div>
+            <input type="text" class="form-control" placeholder="Search order ID, customer or address..." style="max-width: 280px; height: 38px; font-size: 0.85rem;">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Items Summary</th>
+                <th>Pickup Window</th>
+                <th>Assigned Fleet</th>
+                <th>Current Status</th>
+                <th style="width: 180px;">Update Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#FP-9402</strong></td>
+                <td>
+                  <strong>Sarah Jenkins</strong><br>
+                  <small style="color: var(--text-muted);">Midtown (Apt 4B)</small>
+                </td>
+                <td>12 lbs Wash & Fold, 2x Suits</td>
+                <td>Today, 4:00 PM</td>
+                <td><span class="badge badge-secondary"><i class="fa-solid fa-van-shuttle"></i> Van 04 (Alex)</span></td>
+                <td><span class="badge badge-primary order-status-badge">In Washing</span></td>
+                <td>
+                  <select class="form-control form-select admin-status-select" style="padding: 6px 12px; font-size: 0.825rem;">
+                    <option value="pending">Pickup Pending</option>
+                    <option value="washing" selected>In Washing</option>
+                    <option value="delivery">Out for Delivery</option>
+                    <option value="completed">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>#FP-9403</strong></td>
+                <td>
+                  <strong>David Miller</strong><br>
+                  <small style="color: var(--text-muted);">Wall St (Floor 22)</small>
+                </td>
+                <td>5x Business Shirts Pressing</td>
+                <td>Today, 5:30 PM</td>
+                <td><span class="badge badge-secondary"><i class="fa-solid fa-van-shuttle"></i> Van 01 (Mark)</span></td>
+                <td><span class="badge badge-warning order-status-badge">Pickup Pending</span></td>
+                <td>
+                  <select class="form-control form-select admin-status-select" style="padding: 6px 12px; font-size: 0.825rem;">
+                    <option value="pending" selected>Pickup Pending</option>
+                    <option value="washing">In Washing</option>
+                    <option value="delivery">Out for Delivery</option>
+                    <option value="completed">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>#FP-9399</strong></td>
+                <td>
+                  <strong>Elena Rodriguez</strong><br>
+                  <small style="color: var(--text-muted);">DUMBO Waterfront</small>
+                </td>
+                <td>King Duvet + 2x Cashmere Sweaters</td>
+                <td>Yesterday</td>
+                <td><span class="badge badge-secondary"><i class="fa-solid fa-van-shuttle"></i> Van 07 (Sam)</span></td>
+                <td><span class="badge badge-primary order-status-badge">Out for Delivery</span></td>
+                <td>
+                  <select class="form-control form-select admin-status-select" style="padding: 6px 12px; font-size: 0.825rem;">
+                    <option value="pending">Pickup Pending</option>
+                    <option value="washing">In Washing</option>
+                    <option value="delivery" selected>Out for Delivery</option>
+                    <option value="completed">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>#FP-9388</strong></td>
+                <td>
+                  <strong>Marcus Chen</strong><br>
+                  <small style="color: var(--text-muted);">Chelsea Lofts</small>
+                </td>
+                <td>Stain Lab Treatment (Mulberry Silk)</td>
+                <td>Aug 31, 2026</td>
+                <td><span class="badge badge-secondary"><i class="fa-solid fa-van-shuttle"></i> Van 04 (Alex)</span></td>
+                <td><span class="badge badge-success order-status-badge">Delivered</span></td>
+                <td>
+                  <select class="form-control form-select admin-status-select" style="padding: 6px 12px; font-size: 0.825rem;">
+                    <option value="pending">Pickup Pending</option>
+                    <option value="washing">In Washing</option>
+                    <option value="delivery">Out for Delivery</option>
+                    <option value="completed" selected>Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Calculator - FreshPress Transparent Rates</title>
+  <meta name="description" content="Transparent category-wise laundry and dry cleaning rates, interactive basket cost calculator, and monthly Wash Club subscription memberships.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏷️</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+          Fresh<span>Press</span>
+        </a>
+
+        <ul class="nav-menu">
+          <li class="nav-item-dropdown">
+            <a href="index.html" class="nav-link">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></a>
+            <div class="nav-dropdown-menu">
+              <a href="index.html" class="nav-dropdown-item"><i class="fa-solid fa-house"></i> Home 1: General Services</a>
+              <a href="home-niche.html" class="nav-dropdown-item"><i class="fa-solid fa-building"></i> Home 2: B2B & On-Demand SaaS</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item-dropdown">
+            <a href="services.html" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></a>
+            <div class="nav-dropdown-menu">
+              <a href="services.html" class="nav-dropdown-item"><i class="fa-solid fa-list-check"></i> Services Catalog</a>
+              <a href="service-offerings.html" class="nav-dropdown-item"><i class="fa-solid fa-map-location-dot"></i> Offerings & Service Areas</a>
+              <a href="service-details.html" class="nav-dropdown-item"><i class="fa-solid fa-certificate"></i> Eco Dry Cleaning Details</a>
+            </div>
+          </li>
+          <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="dashboard-user.html" class="nav-link">Dashboards <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></a>
+            <div class="nav-dropdown-menu">
+              <a href="dashboard-user.html" class="nav-dropdown-item"><i class="fa-solid fa-user"></i> Customer Dashboard</a>
+              <a href="dashboard-admin.html" class="nav-dropdown-item"><i class="fa-solid fa-chart-line"></i> Admin Dashboard</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" class="btn btn-outline btn-sm rtl-toggle-btn">RTL</button>
+          <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+          <a href="login.html" class="btn btn-outline btn-sm"><i class="fa-regular fa-user"></i> Login</a>
+          <a href="dashboard-user.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-calendar-plus"></i> Schedule Pickup</a>
+          <button type="button" class="nav-toggle-btn" aria-label="Open Navigation"><i class="fa-solid fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer">
+    <div class="flex-between" style="margin-bottom: var(--space-6);">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+        Fresh<span>Press</span>
+      </a>
+      <button type="button" class="btn-icon drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul style="display: flex; flex-direction: column; gap: var(--space-4);">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+      <li><a href="dashboard-user.html" class="nav-link">Customer Dashboard</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+  </aside>
+
+  <main id="main-content">
+    
+    <!-- Hero Header -->
+    <section class="section-sm section-bg">
+      <div class="container text-center">
+        <span class="section-tag accent"><i class="fa-solid fa-tag"></i> Simple, Transparent Pricing</span>
+        <h1 style="margin-bottom: var(--space-3);">Category Rates & Price Estimator</h1>
+        <p class="lead" style="max-width: 680px; margin-inline: auto;">
+          No hidden delivery surcharges, no hanger fees. Pay per item, per pound, or save up to 35% with our monthly Wash Club memberships.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Interactive Laundry Basket Cost Estimator -->
+    <section class="section">
+      <div class="container pricing-estimator-container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Calculator</span>
+          <h2>Build Your Laundry Basket & Estimate Costs</h2>
+          <p>Add or remove clothing items below to see an instant real-time estimate of your total cost and turnaround time.</p>
+        </div>
+
+        <div class="grid" style="grid-template-columns: 1.2fr 0.8fr; gap: var(--space-8); align-items: flex-start;">
+          
+          <!-- Left: Clothing Item Selector -->
+          <div>
+            <!-- Category Filter Pills -->
+            <div class="item-category-pills">
+              <button type="button" class="category-pill active" data-category="all">All Items</button>
+              <button type="button" class="category-pill" data-category="wash">Everyday Wash</button>
+              <button type="button" class="category-pill" data-category="mens">Men's Care</button>
+              <button type="button" class="category-pill" data-category="womens">Women's Care</button>
+              <button type="button" class="category-pill" data-category="household">Household & Bedding</button>
+            </div>
+
+            <!-- Items List -->
+            <div id="clothing-items-list">
+              
+              <!-- Item 1 -->
+              <div class="clothing-item-card" data-category="wash" data-price="22.50">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-jug-detergent"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Wash & Fold Hamper (10 lbs)</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$22.50 / bag • Hypoallergenic detergent</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">1</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="clothing-item-card" data-category="mens" data-price="3.50">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-shirt"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Business Dress Shirt (Wash & Press)</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$3.50 / shirt • Crisp collar, on hanger</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">3</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="clothing-item-card" data-category="mens" data-price="16.50">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-vest"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Two-Piece Business Suit (Dry Clean)</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$16.50 / set • Eco wet-cleaning</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">1</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="clothing-item-card" data-category="womens" data-price="12.00">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-person-dress"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Silk Blouse / Casual Dress</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$12.00 / item • Hand steam pressed</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">0</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="clothing-item-card" data-category="household" data-price="24.00">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-bed"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Queen/King Down Duvet & Comforter</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$24.00 / piece • Thermal sanitization</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">0</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Item 6 -->
+              <div class="clothing-item-card" data-category="mens" data-price="22.00">
+                <div class="clothing-item-info">
+                  <div class="clothing-item-icon"><i class="fa-solid fa-mitten"></i></div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1rem;">Wool Overcoat / Trench</h4>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">$22.00 / piece • De-pilling & water repellency</span>
+                  </div>
+                </div>
+                <div class="quantity-controller">
+                  <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">-</button>
+                  <span class="qty-display">0</span>
+                  <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Real-Time Estimated Summary Card -->
+          <div style="position: sticky; top: 100px;">
+            <div class="card" style="padding: var(--space-6); border: 2px solid var(--primary-light); box-shadow: var(--shadow-xl);">
+              <h3 style="margin-bottom: var(--space-4);">Estimated Basket Summary</h3>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-3); border-bottom: 1px dashed var(--border); padding-bottom: var(--space-4); margin-bottom: var(--space-4);">
+                <div class="flex-between">
+                  <span style="color: var(--text-muted);">Total Selected Items:</span>
+                  <strong id="calc-total-items" style="font-size: 1.1rem;">5</strong>
+                </div>
+                <div class="flex-between">
+                  <span style="color: var(--text-muted);">Turnaround Time:</span>
+                  <strong id="calc-turnaround" style="color: var(--accent);">Standard 24 Hours</strong>
+                </div>
+                <div class="flex-between">
+                  <span style="color: var(--text-muted);">Doorstep Pickup & Delivery:</span>
+                  <strong style="color: var(--accent);">FREE (Orders $25+)</strong>
+                </div>
+              </div>
+
+              <div class="flex-between" style="margin-bottom: var(--space-6);">
+                <span style="font-size: 1.15rem; font-weight: 700;">Estimated Subtotal:</span>
+                <span id="calc-total-price" style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">$49.50</span>
+              </div>
+
+              <a href="dashboard-user.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                <i class="fa-solid fa-calendar-check"></i> Book Pickup with These Items
+              </a>
+
+              <div style="text-align: center; margin-top: var(--space-4); font-size: 0.8rem; color: var(--text-muted);">
+                <i class="fa-solid fa-lock"></i> No payment charged until final intake inspection.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Monthly Wash Club Memberships -->
+    <section class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag accent">Save Up to 35%</span>
+          <h2>FreshPress Wash Club Memberships</h2>
+          <p>Recurring doorstep laundry for busy professionals, couples, and growing families.</p>
+        </div>
+
+        <div class="grid grid-3">
+          
+          <!-- Tier 1 -->
+          <div class="card" style="display: flex; flex-direction: column;">
+            <div style="margin-bottom: var(--space-4);">
+              <span class="badge badge-secondary">Starter</span>
+              <h3 style="margin-block: var(--space-2);">Individual Wash</h3>
+              <p style="font-size: 0.9rem;">Ideal for a single professional with light weekly laundry needs.</p>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary);">$49 <small style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ month</small></div>
+            </div>
+            <ul style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-6); display: flex; flex-direction: column; gap: 8px;">
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> <strong>30 lbs</strong> wash & fold included</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Free weekly scheduled pickup</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> 10% discount on all dry cleaning</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Free reusable canvas hamper bag</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="register.html" class="btn btn-outline" style="width: 100%;">Choose Individual Plan</a>
+            </div>
+          </div>
+
+          <!-- Tier 2 (Popular) -->
+          <div class="card" style="border: 2px solid var(--primary); display: flex; flex-direction: column; transform: scale(1.02); box-shadow: var(--shadow-xl);">
+            <div style="margin-bottom: var(--space-4);">
+              <span class="badge badge-primary">Most Popular</span>
+              <h3 style="margin-block: var(--space-2);">Couple & Pro Care</h3>
+              <p style="font-size: 0.9rem;">The sweet spot for two adults or business travelers needing pressed shirts.</p>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">$89 <small style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ month</small></div>
+            </div>
+            <ul style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-6); display: flex; flex-direction: column; gap: 8px;">
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> <strong>60 lbs</strong> wash & fold included</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> <strong>4 complimentary</strong> dry cleaned dress shirts</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Guaranteed 24-hour turnaround</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> 15% discount on bedding & leather</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Priority evening pickup slots</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="register.html" class="btn btn-primary" style="width: 100%;">Choose Pro Plan</a>
+            </div>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="card" style="display: flex; flex-direction: column;">
+            <div style="margin-bottom: var(--space-4);">
+              <span class="badge badge-secondary">Family Size</span>
+              <h3 style="margin-block: var(--space-2);">Family Executive</h3>
+              <p style="font-size: 0.9rem;">Complete wardrobe peace of mind for households of 3 to 5 people.</p>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary);">$159 <small style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ month</small></div>
+            </div>
+            <ul style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-6); display: flex; flex-direction: column; gap: 8px;">
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> <strong>120 lbs</strong> wash & fold included</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> <strong>8 dry cleaned</strong> suits or dresses</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> 1 free king duvet cleaning per month</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> 20% discount on alterations</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Dedicated private driver route</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="register.html" class="btn btn-outline" style="width: 100%;">Choose Family Plan</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Accepted Payment Methods -->
+    <section class="section">
+      <div class="container text-center" style="max-width: 600px;">
+        <span class="section-tag"><i class="fa-solid fa-credit-card"></i> Seamless Payments</span>
+        <h3>Zero Cash Hassles</h3>
+        <p>All charges are processed securely through your online customer dashboard after we weigh and inspect your garments.</p>
+        <div style="display: flex; justify-content: center; gap: var(--space-4); font-size: 2rem; color: var(--text-muted); margin-top: var(--space-4);">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+          <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+          <i class="fa-brands fa-cc-stripe" title="Stripe Secure"></i>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon"><i class="fa-solid fa-shirt"></i></div>
+            Fresh<span>Press</span>
+          </a>
+          <p style="font-size: 0.9rem; margin-block: var(--space-4);">
+            Clear, upfront prices with zero hidden charges. Doorstep pickup and delivery in 24 hours.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Eco Dry Cleaning</a></li>
+            <li><a href="services.html">Wash & Fold</a></li>
+            <li><a href="services.html">Steam Press</a></li>
+            <li><a href="service-offerings.html">Coverage Areas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <ul class="footer-links">
+            <li><a href="dashboard-user.html">Customer Dashboard</a></li>
+            <li><a href="dashboard-admin.html">Admin Operations</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ready to Book?</h4>
+          <p style="font-size: 0.875rem;">Get your dirty clothes cleaned this week.</p>
+          <a href="dashboard-user.html" class="btn btn-primary btn-sm" style="width: 100%; margin-top: var(--space-3);">Book Pickup Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 FreshPress Laundry Technologies Inc. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
