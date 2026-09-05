@@ -1,0 +1,84 @@
+/* ==========================================================================
+   FreshPress - Right-To-Left (RTL) Stylesheet
+   Activated via [dir="rtl"] on <html> or <body>
+   ========================================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Typography & Directional Alignment */
+[dir="rtl"] .text-left { text-align: right !important; }
+[dir="rtl"] .text-right { text-align: left !important; }
+
+/* Invert directional icons */
+[dir="rtl"] .fa-arrow-right,
+[dir="rtl"] .fa-chevron-right,
+[dir="rtl"] .fa-angle-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .fa-arrow-left,
+[dir="rtl"] .fa-chevron-left,
+[dir="rtl"] .fa-angle-left {
+  transform: scaleX(-1);
+}
+
+/* Navigation & Dropdowns */
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .mobile-drawer {
+  right: auto;
+  left: -320px;
+  transition: left var(--transition-normal);
+}
+
+[dir="rtl"] .mobile-drawer.active {
+  right: auto;
+  left: 0;
+}
+
+/* Forms & Inputs */
+[dir="rtl"] .form-select {
+  background-position: left 14px center;
+  padding-left: 40px;
+  padding-right: 16px;
+}
+
+/* Accordion Header */
+[dir="rtl"] .accordion-header {
+  text-align: right;
+}
+
+/* Tables */
+[dir="rtl"] .table {
+  text-align: right;
+}
+
+/* Stepper Progress Bar */
+[dir="rtl"] .stepper-progress {
+  left: auto;
+  right: 40px;
+}
+
+/* Modals */
+[dir="rtl"] .modal-footer {
+  justify-content: flex-start;
+}
+
+/* Breadcrumbs & Badges */
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+  float: right;
+  padding-right: 0;
+  padding-left: var(--space-2);
+}
+
+/* Before & After badges */
+[dir="rtl"] .ba-badge {
+  left: auto;
+  right: 16px;
+}

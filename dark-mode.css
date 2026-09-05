@@ -1,0 +1,121 @@
+/* ==========================================================================
+   FreshPress - Dark Mode Theme Overrides
+   Activated via [data-theme="dark"] on <html> or <body>
+   ========================================================================== */
+
+[data-theme="dark"] {
+  /* Surfaces & Backgrounds */
+  --bg: #0b1120;
+  --surface: #0f172a;
+  --surface-secondary: #1e293b;
+  --surface-tertiary: #334155;
+  --border: #1e293b;
+  --border-focus: #38bdf8;
+
+  /* Typography */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+
+  /* Brand Tints for Dark Mode */
+  --primary-light: rgba(2, 132, 199, 0.18);
+  --secondary-light: #1e293b;
+  --accent-light: rgba(16, 185, 129, 0.18);
+  --warning-light: rgba(245, 158, 11, 0.18);
+  --danger-light: rgba(239, 68, 68, 0.18);
+
+  /* Shadows for Dark Mode */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* Header & Nav */
+[data-theme="dark"] .site-header {
+  background: rgba(15, 23, 42, 0.88);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .brand-logo {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .nav-dropdown-menu,
+[data-theme="dark"] .mobile-drawer {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* Cards & Components */
+[data-theme="dark"] .card,
+[data-theme="dark"] .booking-quick-card,
+[data-theme="dark"] .order-tracker-card,
+[data-theme="dark"] .clothing-item-card,
+[data-theme="dark"] .accordion-item,
+[data-theme="dark"] .modal-dialog {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .service-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* Form Controls */
+[data-theme="dark"] .form-control {
+  background: #090e1a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+[data-theme="dark"] .form-select {
+  background-color: #090e1a;
+}
+
+[data-theme="dark"] .form-control.is-invalid {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger);
+}
+
+/* Tables */
+[data-theme="dark"] .table-responsive {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+[data-theme="dark"] .table th {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .table td {
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Stepper */
+[data-theme="dark"] .stepper::before {
+  background: #334155;
+}
+
+[data-theme="dark"] .step-icon-bubble {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+/* Skeleton loader */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
